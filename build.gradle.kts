@@ -15,13 +15,23 @@
  */
 
 plugins {
-    val kotlinVersion = "1.6.10"
+    val kotlinVersion = "1.8.0"
     kotlin("multiplatform") version kotlinVersion
     `maven-publish`
+    id("net.linguica.maven-settings") version "0.5"
 }
 
 group = "com.github.nwillc"
-version = "3.1.0-SNAPSHOT"
+version = "3.0.0"
+
+publishing {
+    repositories {
+        maven {
+            name = "3rd-party"
+            url = uri("https://pkgs.dev.azure.com/goco/product/_packaging/3rd-party/maven/v1")
+        }
+    }
+}
 
 logger.lifecycle("${project.group}.${project.name}@${project.version}")
 
